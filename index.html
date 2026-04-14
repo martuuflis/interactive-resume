@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marta Gracia — Senior Product Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07080f;
+    --surface: rgba(255,255,255,0.035);
+    --surface-hover: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.08);
+    --border-accent: rgba(120,100,255,0.3);
+    --text-primary: #f0f0f8;
+    --text-secondary: #8b8ba8;
+    --text-muted: #636380;
+    --accent-blue: #6e8efb;
+    --accent-violet: #9b78f5;
+    --accent-cyan: #4dd9e0;
+    --gradient-main: linear-gradient(135deg, #6e8efb, #9b78f5);
+    --gradient-subtle: linear-gradient(135deg, rgba(110,142,251,0.15), rgba(155,120,245,0.08));
+    --dot-color: rgba(255,255,255,0.09);
+    --glass-bg: rgba(255,255,255,0.04);
+    --glass-border: rgba(255,255,255,0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    min-height: 100vh;
+    /* Dot grid background */
+    background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-attachment: fixed;
+  }
+
+  /* Ambient glow blobs */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -200px;
+    left: -200px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(110,142,251,0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(155,120,245,0.07) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    position: relative;
+    z-index: 1;
+    zoom: 1.10;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: start;
+    margin-bottom: 56px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .header::after { display: none; }
+
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--glass-bg);
+    border: 1px solid var(--border-accent);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent-violet);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    backdrop-filter: blur(12px);
+  }
+
+  .header-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .name {
+    font-family: 'Syne', sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #f0f0f8 30%, #9b78f5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+
+  .title {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent-blue);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .about-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 560px;
+  }
+
+  .about-text strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  /* Header right panel */
+  .header-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+    min-width: 200px;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .meta-item a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .meta-item a:hover { color: var(--accent-blue); }
+
+  .meta-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent-violet);
+    opacity: 0.6;
+  }
+
+  /* ─── LAYOUT ─── */
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* ─── SECTION TITLES ─── */
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--gradient-main);
+  }
+
+  .section-label span {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: letter-spacing 0.3s;
+  }
+
+  /* ─── EXPERIENCE CARDS ─── */
+  .exp-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    transition: border-color 0.3s, background 0.3s, box-shadow 0.3s, transform 0.3s;
+  }
+
+  .exp-card:hover {
+    border-color: rgba(110,142,251,0.35);
+    background: rgba(110,142,251,0.04);
+    box-shadow: 0 0 0 1px rgba(110,142,251,0.08), 0 8px 32px rgba(110,142,251,0.1);
+    transform: translateY(-2px);
+  }
+
+  .exp-card::before { display: none; }
+  .exp-card:hover::before { display: none; }
+
+  .exp-card.featured {
+    border-color: rgba(110,142,251,0.2);
+    background: linear-gradient(135deg, rgba(110,142,251,0.06), rgba(155,120,245,0.04));
+  }
+  .exp-card.featured::before { display: none; }
+
+  .exp-card.featured:hover {
+    border-color: rgba(110,142,251,0.5);
+    background: linear-gradient(135deg, rgba(110,142,251,0.09), rgba(155,120,245,0.06));
+    box-shadow: 0 0 0 1px rgba(110,142,251,0.12), 0 8px 32px rgba(110,142,251,0.1);
+    transform: translateY(-2px);
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+    gap: 12px;
+  }
+
+  .exp-role {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .exp-company {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent-blue);
+    margin-bottom: 4px;
+  }
+
+  .exp-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #7b7fa8;
+    background: rgba(255,255,255,0.05);
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .tag.accent {
+    border-color: rgba(110,142,251,0.3);
+    color: var(--accent-blue);
+    background: rgba(110,142,251,0.07);
+  }
+
+  .exp-card.featured .tag {
+    border-color: rgba(110,142,251,0.25);
+    color: rgba(140,160,255,0.8);
+    background: rgba(110,142,251,0.06);
+  }
+
+  .exp-card:hover .tag {
+    border-color: rgba(110,142,251,0.3);
+    color: rgba(160,175,255,0.85);
+    background: rgba(110,142,251,0.07);
+  }
+
+  .exp-card.featured:hover .tag {
+    border-color: rgba(110,142,251,0.4);
+    color: rgba(160,175,255,0.95);
+    background: rgba(110,142,251,0.1);
+  }
+
+  .exp-card:hover .tag.accent {
+    border-color: rgba(110,142,251,0.5);
+    color: var(--accent-blue);
+    background: rgba(110,142,251,0.12);
+  }
+
+  .metric {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-secondary);
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .exp-card:hover .metric {
+    border-color: rgba(110,142,251,0.2);
+    background: rgba(110,142,251,0.05);
+  }
+
+  .exp-body {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .exp-body p {
+    margin-bottom: 6px;
+  }
+
+  .metric-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .metric strong {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    margin-bottom: 1px;
+  }
+
+  .metric-note {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ─── SIDEBAR ─── */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 29px;
+  }
+
+  .sidebar-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    backdrop-filter: blur(12px);
+    transition: border-color 0.3s, background 0.3s, box-shadow 0.3s, transform 0.3s;
+  }
+
+  .sidebar-card:hover {
+    border-color: rgba(110,142,251,0.25);
+    background: rgba(110,142,251,0.03);
+    box-shadow: 0 0 0 1px rgba(110,142,251,0.05), 0 6px 20px rgba(110,142,251,0.06);
+    transform: translateY(-1px);
+  }
+
+  .sidebar-card:hover .skill-pill {
+    border-color: rgba(110,142,251,0.25);
+    color: rgba(160,175,255,0.85);
+    background: rgba(110,142,251,0.06);
+  }
+
+  .ai-card {
+    border-color: rgba(155,120,245,0.25);
+  }
+
+  .ai-card:hover {
+    border-color: rgba(155,120,245,0.4);
+    background: linear-gradient(135deg, rgba(155,120,245,0.1), rgba(110,142,251,0.05));
+    box-shadow: 0 0 0 1px rgba(155,120,245,0.06), 0 6px 20px rgba(155,120,245,0.08);
+    transform: translateY(-1px);
+  }
+
+  .ai-card:hover .skill-pill.ai {
+    border-color: rgba(155,120,245,0.55);
+    color: rgba(185,160,255,0.95);
+    background: rgba(155,120,245,0.12);
+  }
+
+  /* Skills grid */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .skill-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.025);
+    transition: all 0.2s;
+  }
+
+  .skill-pill:hover {
+    border-color: var(--border-accent);
+    color: var(--accent-blue);
+    background: rgba(110,142,251,0.07);
+  }
+
+  .skill-pill.ai {
+    border-color: rgba(155,120,245,0.35);
+    color: var(--accent-violet);
+    background: rgba(155,120,245,0.07);
+  }
+
+  /* Stack items */
+  .stack-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+  }
+  .stack-item:last-child { border-bottom: none; }
+
+  .stack-name {
+    color: var(--text-secondary);
+    font-size: 12px;
+  }
+
+  .stack-level {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .stack-bar {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+  }
+
+  .bar-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .bar-dot.filled {
+    background: var(--gradient-main);
+  }
+
+  /* Languages */
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 12px;
+    border-bottom: 1px solid var(--border);
+    transition: padding-left 0.2s;
+    cursor: default;
+  }
+  .lang-item:last-child { border-bottom: none; }
+  .lang-item:hover { padding-left: 4px; }
+
+  .lang-name {
+    color: var(--text-secondary);
+    transition: color 0.2s;
+  }
+  .lang-item:hover .lang-name { color: var(--text-primary); }
+
+  .lang-level {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 2px 7px;
+    border-radius: 10px;
+    transition: all 0.2s;
+  }
+  .lang-item:hover .lang-level {
+    border-color: var(--border-accent);
+    color: var(--accent-blue);
+    background: rgba(110,142,251,0.07);
+  }
+
+  /* Award */
+  .award-card {
+    background: linear-gradient(135deg, rgba(110,142,251,0.08), rgba(155,120,245,0.06));
+    border: 1px solid rgba(155,120,245,0.25);
+    border-radius: 12px;
+    padding: 16px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .award-card::before {
+    content: '★';
+    position: absolute;
+    top: -10px;
+    right: 12px;
+    font-size: 60px;
+    opacity: 0.04;
+    color: var(--accent-violet);
+  }
+
+  .award-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .award-org {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent-violet);
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── EDUCATION ─── */
+  .edu-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px 16px;
+    align-items: start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .edu-item:last-child { border-bottom: none; }
+
+  .edu-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    padding-top: 3px;
+    white-space: nowrap;
+  }
+
+  .edu-degree {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+    line-height: 1.4;
+  }
+
+  .edu-school {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .edu-honors {
+    font-size: 11px;
+    color: var(--accent-blue);
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  /* ─── FOOTER ─── */
+  .cv-footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-mono {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-mono a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  /* Print */
+  /* Language switcher */
+  .lang-trigger { cursor: pointer; }
+  .lang-trigger.active .lang-name { color: var(--accent-blue); font-weight: 500; }
+  .lang-trigger.active .lang-level {
+    border-color: var(--border-accent);
+    color: var(--accent-blue);
+    background: rgba(110,142,251,0.12);
+  }
+
+  /* Translation overlay */
+  #translate-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: rgba(7,8,15,0.7);
+    backdrop-filter: blur(6px);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+  }
+  #translate-overlay.visible { display: flex; }
+  #translate-overlay .tl-spinner {
+    width: 36px; height: 36px;
+    border: 2px solid rgba(110,142,251,0.2);
+    border-top-color: var(--accent-blue);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  #translate-overlay .tl-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--text-secondary);
+  }
+
+  @media print {
+    body {
+      background-color: #07080f;
+      background-attachment: fixed;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .exp-card:hover { background: var(--glass-bg); }
+  }
+
+  @media (max-width: 720px) {
+    .content { grid-template-columns: 1fr; }
+    .header { grid-template-columns: 1fr; }
+    .name { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ─── HEADER ─── -->
+  <header class="header">
+    <div class="header-left">
+      <div class="header-badge">Spain · Open to Hybrid & Remote</div>
+      <h1 class="name">Marta Gracia</h1>
+      <div class="title">Senior Product Designer · UX/UI Lecturer</div>
+      <p class="about-text">
+        Senior Product Designer with <strong>7+ years of experience</strong> leading end-to-end product design for early-stage startups and Big-Tech. First designer at multiple companies, I've shipped <strong>27 products</strong> across 11 cross-functional teams from MVPs to high-scale products.<br><br>
+        I actively integrate <strong>AI tools (Claude, ChatGPT, Perplexity, Gemini)</strong> into my design process — from research synthesis and rapid prototyping to UX writing and documentation — moving faster and with greater precision at every stage of the design process.
+      </p>
+    </div>
+    <div class="header-meta">
+      <div class="meta-item"><span class="meta-dot"></span> <a href="#" id="email-trigger"><span class="__cf_email__" data-cfemail="92fff3e0e6f3f5e0f3fbf0d2f5fff3fbfebcf1fdff">[email&#160;protected]</span></a></div>
+      <div class="meta-item"><span class="meta-dot"></span> <a href="https://martagracia.framer.website" target="_blank">martagracia.framer.website</a></div>
+      <div class="meta-item"><span class="meta-dot"></span> <a href="https://linkedin.com/in/marta-gracia-ibanez" target="_blank">linkedin.com/marta-gracia-ibanez</a></div>
+      <div class="meta-item"><span class="meta-dot"></span> <a href="https://medium.com/@martagraib" target="_blank">medium.com/@martagraib</a></div>
+    </div>
+  </header>
+
+  <div id="email-modal" style="display:none; position:fixed; inset:0; z-index:100;">
+    <!-- backdrop -->
+    <div id="modal-backdrop" style="position:absolute; inset:0; background:rgba(7,8,15,0.5); backdrop-filter:blur(4px); opacity:0; transition:opacity 0.35s;"></div>
+    <!-- drawer -->
+    <div id="modal-box" style="position:absolute; top:0; right:0; height:100%; width:100%; max-width:420px; background:#0d0e1b; border-left:1px solid rgba(110,142,251,0.2); padding:40px 32px 32px; overflow-y:auto; transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.4,0,0.2,1); display:flex; flex-direction:column;">
+
+      <!-- CLOSE -->
+      <button id="modal-close" style="position:absolute; top:20px; right:20px; background:none; border:none; color:var(--text-muted); font-size:16px; cursor:pointer; line-height:1; transition:color 0.2s;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-muted)'">✕</button>
+
+      <!-- FORM VIEW -->
+      <div id="modal-form-view" style="display:flex; flex-direction:column; flex:1; min-height:0;">
+        <div style="margin-bottom:20px;">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent-violet); margin-bottom:2px;">Let's get in touch!</div>
+          <div style="font-family:'Syne',sans-serif; font-size:20px; font-weight:700; color:var(--text-primary);">Send me a message</div>
+        </div>
+
+        <!-- NAME -->
+        <div style="margin-bottom:16px;">
+          <label style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text-muted); display:block; margin-bottom:6px; letter-spacing:0.08em;">YOUR NAME</label>
+          <input id="modal-name" type="text" placeholder="Jane Doe"
+            style="width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 14px; color:var(--text-primary); font-family:'DM Sans',sans-serif; font-size:13px; outline:none; transition:border-color 0.2s; box-sizing:border-box;">
+          <div id="err-name" style="display:none; font-family:'DM Mono',monospace; font-size:11px; color:#f07070; margin-top:5px; letter-spacing:0.05em;">Psst — I'd love to know who's writing!</div>
+        </div>
+
+        <!-- EMAIL -->
+        <div style="margin-bottom:16px;">
+          <label style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text-muted); display:block; margin-bottom:6px; letter-spacing:0.08em;">YOUR EMAIL</label>
+          <input id="modal-email" type="email" placeholder="you@company.com"
+            style="width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 14px; color:var(--text-primary); font-family:'DM Sans',sans-serif; font-size:13px; outline:none; transition:border-color 0.2s; box-sizing:border-box;">
+          <div id="err-email" style="display:none; font-family:'DM Mono',monospace; font-size:11px; color:#f07070; margin-top:5px; letter-spacing:0.05em;">That doesn't look quite right — valid email?</div>
+        </div>
+
+        <!-- MESSAGE -->
+        <div style="margin-bottom:16px; flex:1; display:flex; flex-direction:column; min-height:0;">
+          <label style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text-muted); display:block; margin-bottom:6px; letter-spacing:0.08em;">MESSAGE</label>
+          <textarea id="modal-message" placeholder="Hi Marta, I'd love to connect about..." 
+            style="flex:1; width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 14px; color:var(--text-primary); font-family:'DM Sans',sans-serif; font-size:13px; outline:none; resize:none; transition:border-color 0.2s; box-sizing:border-box; display:block; min-height:120px;"></textarea>
+          <div id="err-message" style="display:none; font-family:'DM Mono',monospace; font-size:11px; color:#f07070; margin-top:5px; letter-spacing:0.05em;">Don't be shy — say something!</div>
+        </div>
+
+        <!-- RESUME TOGGLE -->
+        <div id="resume-card" onclick="document.getElementById('resume-toggle').click()" style="margin-bottom:24px; display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 14px; cursor:pointer; transition:background 0.2s, border-color 0.2s; user-select:none;">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text-secondary); letter-spacing:0.05em;">I want to receive this resume as a PDF</div>
+          <label style="position:relative; display:inline-block; width:40px; height:22px; flex-shrink:0; margin-left:12px; pointer-events:none;">
+            <input type="checkbox" id="resume-toggle" checked style="opacity:0; width:0; height:0;">
+            <span id="toggle-track" style="position:absolute; cursor:pointer; inset:0; background:rgba(255,255,255,0.08); border-radius:22px; transition:background 0.2s;"></span>
+            <span id="toggle-thumb" style="position:absolute; content:''; height:16px; width:16px; left:3px; top:3px; background:#fff; border-radius:50%; transition:transform 0.2s;"></span>
+          </label>
+        </div>
+
+        <button id="modal-send"
+          style="width:100%; padding:12px; background:linear-gradient(135deg,#6e8efb,#9b78f5); border:none; border-radius:8px; color:#fff; font-family:'DM Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; transition:opacity 0.2s;"
+          onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Send Message</button>
+
+        <!-- DEBUG ONLY — REMOVE BEFORE PUBLISH -->
+        <button id="debug-success-btn"
+          onclick="closeModal(); setTimeout(showToast, 400);"
+          style="width:100%; margin-top:8px; padding:10px; background:none; border:1px dashed rgba(240,112,112,0.35); border-radius:8px; color:rgba(240,112,112,0.6); font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; cursor:pointer; transition:all 0.2s;"
+          onmouseover="this.style.borderColor='rgba(240,112,112,0.6)'; this.style.color='#f07070';" onmouseout="this.style.borderColor='rgba(240,112,112,0.35)'; this.style.color='rgba(240,112,112,0.6)';">⚙ debug: preview success screen</button>
+        <!-- /DEBUG -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="success-toast" style="position:fixed; top:24px; left:50%; transform:translateX(-50%) translateY(-20px); z-index:200; opacity:0; transition:opacity 0.3s, transform 0.3s; pointer-events:none;">
+    <div style="display:flex; align-items:center; gap:12px; background:rgba(14,30,20,0.95); border:1px solid rgba(70,200,120,0.3); border-radius:12px; padding:14px 20px; box-shadow:0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(70,200,120,0.08); white-space:nowrap;">
+      <div>
+        <div style="font-family:'Syne',sans-serif; font-size:13px; font-weight:600; color:#a8f0c0;">Message sent!</div>
+        <div style="font-family:'DM Mono',monospace; font-size:11px; color:rgba(140,210,160,0.7); margin-top:1px;">I'll get back to you as soon as possible.</div>
+      </div>
+      <button onclick="hideToast()" style="background:none; border:none; color:rgba(140,210,160,0.5); font-size:14px; cursor:pointer; margin-left:8px; padding:0; line-height:1; pointer-events:all; transition:color 0.2s;" onmouseover="this.style.color='rgba(140,210,160,1)'" onmouseout="this.style.color='rgba(140,210,160,0.5)'">✕</button>
+    </div>
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const modal = document.getElementById('email-modal');
+    const formView = document.getElementById('modal-form-view');
+
+    function resetModal() {
+      formView.style.display = 'flex';
+      ['modal-name','modal-email','modal-message'].forEach(id => {
+        document.getElementById(id).value = '';
+        setFieldState(document.getElementById(id), 'default');
+      });
+      ['err-name','err-email','err-message'].forEach(id => {
+        document.getElementById(id).style.display = 'none';
+      });
+    }
+
+    let toastTimer;
+    function showToast() {
+      const toast = document.getElementById('success-toast');
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+      toast.style.pointerEvents = 'all';
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(hideToast, 10000);
+    }
+    function hideToast() {
+      const toast = document.getElementById('success-toast');
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(-50%) translateY(-20px)';
+      toast.style.pointerEvents = 'none';
+    }
+
+    function setFieldState(el, state) {
+      const colors = { default: 'rgba(255,255,255,0.08)', focus: 'rgba(110,142,251,0.5)', error: 'rgba(240,112,112,0.6)', valid: 'rgba(77,217,224,0.4)' };
+      el.style.borderColor = colors[state] || colors.default;
+    }
+
+    // Resume toggle
+    const resumeToggle = document.getElementById('resume-toggle');
+    const toggleTrack = document.getElementById('toggle-track');
+    const toggleThumb = document.getElementById('toggle-thumb');
+    const resumeCard = document.getElementById('resume-card');
+
+    function updateToggleUI(checked) {
+      if (checked) {
+        toggleTrack.style.background = 'rgba(110,142,251,0.5)';
+        toggleThumb.style.transform = 'translateX(18px)';
+        resumeCard.style.background = 'rgba(110,142,251,0.08)';
+        resumeCard.style.borderColor = 'rgba(110,142,251,0.35)';
+      } else {
+        toggleTrack.style.background = 'rgba(255,255,255,0.08)';
+        toggleThumb.style.transform = 'translateX(0)';
+        resumeCard.style.background = 'rgba(255,255,255,0.03)';
+        resumeCard.style.borderColor = 'rgba(255,255,255,0.08)';
+      }
+    }
+
+    updateToggleUI(resumeToggle.checked);
+    resumeToggle.addEventListener('change', function() { updateToggleUI(this.checked); });
+    ['modal-name','modal-email','modal-message'].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener('focus', () => { if (el.style.borderColor !== 'rgba(240,112,112,0.6)') setFieldState(el, 'focus'); });
+      el.addEventListener('blur', () => { if (el.style.borderColor !== 'rgba(240,112,112,0.6)') setFieldState(el, 'default'); });
+    });
+
+    const backdrop = document.getElementById('modal-backdrop');
+    const drawerBox = document.getElementById('modal-box');
+
+    function openModal() {
+      modal.style.display = 'block';
+      requestAnimationFrame(() => {
+        backdrop.style.opacity = '1';
+        drawerBox.style.transform = 'translateX(0)';
+      });
+    }
+
+    function closeModal() {
+      backdrop.style.opacity = '0';
+      drawerBox.style.transform = 'translateX(100%)';
+      setTimeout(() => { modal.style.display = 'none'; }, 350);
+    }
+
+    document.getElementById('email-trigger').addEventListener('click', function(e) {
+      e.preventDefault();
+      resetModal();
+      openModal();
+    });
+
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+
+    document.getElementById('modal-send').addEventListener('click', function() {
+      const nameEl = document.getElementById('modal-name');
+      const emailEl = document.getElementById('modal-email');
+      const msgEl = document.getElementById('modal-message');
+      const name = nameEl.value.trim();
+      const email = emailEl.value.trim();
+      const message = msgEl.value.trim();
+      const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      let valid = true;
+
+      if (!name) {
+        setFieldState(nameEl, 'error');
+        document.getElementById('err-name').style.display = 'block';
+        valid = false;
+      } else {
+        setFieldState(nameEl, 'valid');
+        document.getElementById('err-name').style.display = 'none';
+      }
+
+      if (!email || !emailValid) {
+        setFieldState(emailEl, 'error');
+        document.getElementById('err-email').style.display = 'block';
+        valid = false;
+      } else {
+        setFieldState(emailEl, 'valid');
+        document.getElementById('err-email').style.display = 'none';
+      }
+
+      if (!message) {
+        setFieldState(msgEl, 'error');
+        document.getElementById('err-message').style.display = 'block';
+        valid = false;
+      } else {
+        setFieldState(msgEl, 'valid');
+        document.getElementById('err-message').style.display = 'none';
+      }
+
+      if (!valid) return;
+
+      const resumeRequested = document.getElementById('resume-toggle').checked;
+      const subject = encodeURIComponent('Contact from ' + name + (resumeRequested ? ' — Resume requested' : ''));
+      const body = encodeURIComponent(message + (resumeRequested ? '\n\n[Please attach your resume as PDF]' : '') + '\n\nFrom: ' + name + ' <' + email + '>');
+      window.location.href = 'mailto:martagraib@gmail.com?subject=' + subject + '&body=' + body;
+      closeModal();
+      setTimeout(showToast, 400);
+    });
+  </script>
+
+  <!-- ─── MAIN CONTENT ─── -->
+  <div class="content">
+    <main class="main-col">
+
+      <!-- CURRENTLY WORKING ON -->
+      <section class="section">
+        <div class="section-label"><span>Currently Working On</span></div>
+
+        <!-- Lidl -->
+        <div class="exp-card featured">
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Senior Product Designer</div>
+              <div class="exp-company">SCRM Lidl — Scan & Go product in Lidl Plus</div>
+            </div>
+            <div style="text-align:right; flex-shrink:0">
+              <div class="tag accent">Apr 2024 — Present</div>
+            </div>
+          </div>
+          <div class="exp-meta">
+            <span class="tag">Retail · Consumer</span>
+            <span class="tag">B2B2C</span>
+            <span class="tag">High-Scale Product</span>
+            <span class="tag">30 countries</span>
+          </div>
+          <div class="exp-body">
+            <p>Responsible for end-to-end ownership of Scan & Go, a high-scale B2C mobile product from the Lidl Plus App used across +1000 stores by +200.000 customers. I lead the full product lifecycle from discovery to delivery and post-launch optimization, working closely with Product, Engineering, and Business Stakeholders in a highly complex, politically constrained environment.</p>
+            <p>My role includes translating business and user needs into scalable product solutions, aligning technical feasibility with product strategy. Actively involved in scaling the feature from early pilot stages to international rollout, adapting the experience across multiple markets and constraints. I have a data-informed approach combining user research, usability testing, and A/B testing. I also contribute to the evolution of the Design System and lead initiatives such as UX writing improvements to ensure consistency and clarity across the Lidl Plus App experience.</p>
+          </div>
+          <div class="metric-row">
+            <div class="metric" style="background:rgba(110,142,251,0.08); border-color:rgba(110,142,251,0.25);"><strong>+200.000</strong>Monthly Active Users</div>
+            <div class="metric" style="background:rgba(110,142,251,0.08); border-color:rgba(110,142,251,0.25);"><strong>+8%</strong>Conversion Uplift YOY</div>
+            <div class="metric" style="background:rgba(110,142,251,0.08); border-color:rgba(110,142,251,0.25);"><strong>-15%</strong>Checkout drop-off YOY</div>
+          </div>
+          <span class="metric-note">Direct impact of my journey within the Scan & Go product</span>
+        </div>
+
+        <!-- Nuclio -->
+        <div class="exp-card featured">
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">UI Design with Figma & AI Tools Instructor</div>
+              <div class="exp-company">Nuclio Digital School — UX/UI Design + AI Design Master</div>
+            </div>
+            <div><div class="tag accent">Jun 2024 — Present</div></div>
+          </div>
+          <div class="exp-body">
+            <p>&#9733; Awarded Best Instructor of the 2024/25 Academic Year across all Master's programs at Nuclio Digital School.</p>
+          </div>
+        </div>
+
+        <!-- Freelance -->
+        <div class="exp-card featured">
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Product Designer for SaaS AI Startups</div>
+              <div class="exp-company">Freelance — Side projects</div>
+            </div>
+            <div><div class="tag accent">Jul 2023 — Present</div></div>
+          </div>
+          <div class="exp-meta">
+            <span class="tag">Legal Tech</span>
+            <span class="tag">Sales Automation</span>
+            <span class="tag">Workspace Tools</span>
+            <span class="tag">B2B</span>
+          </div>
+          <div class="exp-body">
+            <p>Acted as the first Product Designer across three early-stage B2B SaaS startups, leading UX strategy and shaping AI-driven product experiences from 0 to 1. Defined product foundations with a strong focus on how AI integrates into the end-user experience — translating emerging capabilities into usable interactions.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- MORE WORK EXPERIENCE -->
+      <section class="section">
+        <div class="section-label"><span>More Work Experience</span></div>
+
+        <!-- Mundimoto -->
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Product Design Lead</div>
+              <div class="exp-company">Mundimoto — Europe's largest motorcycle marketplace</div>
+            </div>
+            <div><div class="tag accent">Mar 2022 — Jun 2023</div></div>
+          </div>
+          <div class="exp-meta">
+            <span class="tag">E-Commerce</span>
+            <span class="tag">Series B Startup</span>
+            <span class="tag">B2C</span>
+          </div>
+          <div class="exp-body">
+            <p>Contributed to product strategy and roadmap definition while scaling the E-Commerce's UX (<a href="https://martagracia.framer.website" target="_blank" style="color:var(--text-secondary); text-decoration:underline;">featured in portfolio</a>). Led the redesign of the e-commerce experience. Optimized the checkout funnel to generate 20% of total revenue through organic sales while reducing administrative workload by 60%. Additionally, mentored junior designers, facilitated cross-functional workshops, and partnered closely with engineering and management to deliver data-informed UX improvements.</p>
+          </div>
+          <div class="metric-row">
+            <div class="metric"><strong>+35%</strong>Organic Leads</div>
+            <div class="metric"><strong>+75%</strong>Traffic YOY</div>
+            <div class="metric"><strong>-60%</strong>Manual Workload</div>
+          </div>
+          <span class="metric-note">Direct impact of my journey in Mundimoto's E-Commerce</span>
+        </div>
+
+        <!-- KeepCoding -->
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Design, Prototyping & Figma Instructor</div>
+              <div class="exp-company">KeepCoding</div>
+            </div>
+            <div><div class="tag accent">Jun 2023 — Nov 2024</div></div>
+          </div>
+          <div class="exp-body">
+            <p>Taught design, animation, and Figma fundamentals to a wide range of students in bootcamp-format programs.</p>
+          </div>
+        </div>
+
+        <!-- Tekman -->
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">UX/UI Designer</div>
+              <div class="exp-company">Tekman — Delivering learning platforms for schools</div>
+            </div>
+            <div><div class="tag accent">Mar 2022 — Jun 2023</div></div>
+          </div>
+          <div class="exp-meta">
+            <span class="tag">Ed-Tech</span>
+            <span class="tag">B2B</span>
+          </div>
+          <div class="exp-body">
+            <p>I lead end-to-end design of six SaaS products—including Cibers (<a href="https://martagracia.framer.website" target="_blank" style="color:var(--text-secondary); text-decoration:underline;">featured in portfolio</a>)—driving UX improvements, scalability, and cross-platform consistency across desktop, tablet, and mobile environments. I built a scalable Design System with six product layers, enabling design consistency and collaboration between the design team and engineering. Partnered closely with product managers and engineers within Agile environments. Applied user research to inform design decisions. Championed design excellence through internal talks and by bridging design and development through strong technical understanding.</p>
+          </div>
+          <div class="metric-row">
+            <div class="metric"><strong>6</strong>Redesigned Products</div>
+            <div class="metric"><strong>+6.000</strong>Teachers Impacted</div>
+            <div class="metric"><strong>+180.000</strong>Students Impacted</div>
+          </div>
+          <span class="metric-note">Direct impact of my journey in Tekman</span>
+        </div>
+
+        <!-- Earlier -->
+        <div class="exp-card" style="background: transparent; border-style: dashed;">
+          <div class="exp-body" style="font-size:12px">
+            <p><strong style="color:var(--text-primary)">Earlier:</strong> UX/UI Designer @ Arcamic (2020) · UX Design Intern @ Hiberus Consultant (2019–20) · UX Researcher @ Zaragoza Vivienda (2019)</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ─── SIDEBAR ─── -->
+    <aside class="sidebar">
+
+      <!-- AI Tools — featured -->
+      <div class="sidebar-card ai-card" style="background: linear-gradient(135deg, rgba(155,120,245,0.07), rgba(110,142,251,0.04));">
+        <div class="section-label" style="margin-bottom:12px"><span>AI Stack</span></div>
+        <div class="skills-grid">
+          <span class="skill-pill ai">Claude</span>
+          <span class="skill-pill ai">Claude Code</span>
+          <span class="skill-pill ai">ChatGPT</span>
+          <span class="skill-pill ai">Figma AI</span>
+          <span class="skill-pill ai">Perplexity</span>
+          <span class="skill-pill ai">Gemini</span>
+          <span class="skill-pill ai">GitHub</span>
+          <span class="skill-pill ai">Notion AI</span>
+          <span class="skill-pill ai">V0</span>
+          <span class="skill-pill ai">Granola</span>
+        </div>
+      </div>
+
+      <!-- Design Stack -->
+      <div class="sidebar-card">
+        <div class="section-label" style="margin-bottom:12px"><span>Design Stack</span></div>
+        <div class="skills-grid">
+          <span class="skill-pill">Figma</span>
+          <span class="skill-pill">FigJam</span>
+          <span class="skill-pill">Miro</span>
+          <span class="skill-pill">Notion</span>
+          <span class="skill-pill">Maze</span>
+          <span class="skill-pill">LottieFiles</span>
+          <span class="skill-pill">Metabase</span>
+          <span class="skill-pill">GA4</span>
+          <span class="skill-pill">Jira</span>
+          <span class="skill-pill">Zeplin</span>
+          <span class="skill-pill">Mobbin</span>
+          <span class="skill-pill">Framer</span>
+        </div>
+      </div>
+
+      <!-- Hard Skills -->
+      <div class="sidebar-card">
+        <div class="section-label" style="margin-bottom:12px"><span>Core Skills</span></div>
+        <div class="skills-grid">
+          <span class="skill-pill">MVP Definition</span>
+          <span class="skill-pill">UX Writing</span>
+          <span class="skill-pill">Design Systems</span>
+          <span class="skill-pill">Mentorship</span>
+          <span class="skill-pill">User Research</span>
+          <span class="skill-pill">A/B testing</span>
+          <span class="skill-pill">Product Discovery</span>
+          <span class="skill-pill">End-to-end Design</span>
+          <span class="skill-pill">Usability Testing</span>
+          <span class="skill-pill">Workshop Facilitation</span>
+          <span class="skill-pill">Stakeholder management</span>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="sidebar-card">
+        <div class="section-label" style="margin-bottom:12px"><span>Languages</span></div>
+        <div class="lang-item lang-trigger" data-lang="es" data-lang-name="Spanish" title="Traducir al español">
+          <span class="lang-name">Spanish</span>
+          <span class="lang-level">Native</span>
+        </div>
+        <div class="lang-item lang-trigger" data-lang="en" data-lang-name="English" title="Translate to English">
+          <span class="lang-name">English</span>
+          <span class="lang-level">C2</span>
+        </div>
+        <div class="lang-item lang-trigger" data-lang="fr" data-lang-name="French" title="Traduire en français">
+          <span class="lang-name">French</span>
+          <span class="lang-level">B1</span>
+        </div>
+        <div class="lang-item lang-trigger" data-lang="ca" data-lang-name="Catalan" title="Traduir al català">
+          <span class="lang-name">Catalan</span>
+          <span class="lang-level">B1</span>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="sidebar-card">
+        <div class="section-label" style="margin-bottom:4px"><span>Education</span></div>
+        <div class="edu-item">
+          <span class="edu-year">2019–20</span>
+          <div>
+            <div class="edu-degree">Master's in Product Design</div>
+            <div class="edu-school">Engineering University, Zaragoza (Spain)</div>
+            <div class="edu-honors">With honors · Digital Interaction Design</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <span class="edu-year">2018–19</span>
+          <div>
+            <div class="edu-degree">Product Design & Visual Communication</div>
+            <div class="edu-school">University of Fine Arts, Poznan (Poland)</div>
+            <div class="edu-honors">With honors · Visual Communication</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <span class="edu-year">2015–19</span>
+          <div>
+            <div class="edu-degree">Bachelor in Industrial Design Engineering and Product Development</div>
+            <div class="edu-school">Engineering University, Zaragoza (Spain)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Courses -->
+      <div class="sidebar-card">
+        <div class="section-label" style="margin-bottom:4px"><span>Courses</span></div>
+        <div class="edu-item">
+          <span class="edu-year">mar.<br>2026</span>
+          <div>
+            <div class="edu-degree">Design Process Facilitation Workshop</div>
+            <div class="edu-school">La Nave Nodriza</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <span class="edu-year">nov.<br>2025</span>
+          <div>
+            <div class="edu-degree">Accessible Color Palette</div>
+            <div class="edu-school">WeAAAre</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <span class="edu-year">nov.<br>2021</span>
+          <div>
+            <div class="edu-degree">Design Thinking for Innovation</div>
+            <div class="edu-school">University of Virginia Darden School</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <span class="edu-year">nov.<br>2021</span>
+          <div>
+            <div class="edu-degree">UX Writing Foundations</div>
+            <div class="edu-school">UX Writing HUB</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <span class="edu-year">oct.<br>2020</span>
+          <div>
+            <div class="edu-degree">Web Analytics with Google Analytics</div>
+            <div class="edu-school">INAEM</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <span class="edu-year">oct.<br>2020</span>
+          <div>
+            <div class="edu-degree">Fundamentals of Digital Marketing</div>
+            <div class="edu-school">IAB</div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="cv-footer">
+    <span class="footer-mono">Updated April 2026 · Made in Claude + Figma</span>
+        <span class="footer-mono"><a href="https://martagracia.framer.website" target="_blank">martagracia.framer.website</a> · <a href="mailto:martagraib@gmail.com">martagraib@gmail.com</a></span>
+  </footer>
+</div>
+
+<!-- Translation Overlay -->
+<div id="translate-overlay">
+  <div class="tl-spinner"></div>
+  <div class="tl-label" id="translate-label">Translating...</div>
+</div>
+
+<script>
+(function() {
+  // ── Collect all translatable text nodes ──────────────────────────────────
+  // We tag each with a unique id and store original text
+  const SKIP_SELECTORS = 'script,style,noscript,#translate-overlay,#email-modal,#success-toast,.lang-level,.lang-name,.meta-item,.skills-grid,.skill-pill,.sidebar-card .section-label,.edu-year,.footer-mono,a';
+  
+  // Collect elements whose textContent we want to translate
+  // Strategy: collect specific content elements
+  const CONTENT_SELECTORS = [
+    '.name', '.title', '.about-text',
+    '.header-badge',
+    '.section-label span',
+    '.exp-role', '.exp-company', '.exp-body p',
+    '.tag:not(.accent)', '.tag.accent',
+    '.exp-meta .tag',
+    '.metric', '.metric-note',
+    '.edu-degree', '.edu-school', '.edu-honors',
+    '.award-title', '.award-org',
+    '.metric strong'
+  ];
+
+  let originalTexts = null; // { el: Node, text: string }[]
+  let currentLang = 'en';
+  const cache = {}; // lang -> [{el, text}]
+
+  function collectOriginals() {
+    if (originalTexts) return;
+    originalTexts = [];
+    CONTENT_SELECTORS.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        // Store reference + original innerHTML
+        originalTexts.push({ el, html: el.innerHTML });
+      });
+    });
+  }
+
+  function applyTranslation(translations) {
+    // translations is array of strings in same order as originalTexts
+    translations.forEach((text, i) => {
+      if (originalTexts[i] && text) {
+        originalTexts[i].el.innerHTML = text;
+      }
+    });
+  }
+
+  function restoreOriginals() {
+    if (!originalTexts) return;
+    originalTexts.forEach(({ el, html }) => { el.innerHTML = html; });
+  }
+
+  function showOverlay(langName) {
+    const overlay = document.getElementById('translate-overlay');
+    document.getElementById('translate-label').textContent = 'Translating to ' + langName + '...';
+    overlay.classList.add('visible');
+  }
+
+  function hideOverlay() {
+    document.getElementById('translate-overlay').classList.remove('visible');
+  }
+
+  function setActiveLang(langCode) {
+    document.querySelectorAll('.lang-trigger').forEach(el => {
+      el.classList.toggle('active', el.dataset.lang === langCode);
+    });
+  }
+
+  async function translateTo(langCode, langName) {
+    if (langCode === currentLang) return;
+
+    collectOriginals();
+
+    // If we have a cache hit, apply instantly
+    if (cache[langCode]) {
+      if (langCode === 'en') restoreOriginals();
+      else applyTranslation(cache[langCode]);
+      currentLang = langCode;
+      setActiveLang(langCode);
+      return;
+    }
+
+    showOverlay(langName);
+
+    try {
+      // Build the list of texts to translate
+      const texts = originalTexts.map(({ el }) => el.innerHTML);
+
+      const langMap = { es: 'Spanish', fr: 'French', ca: 'Catalan', en: 'English' };
+      const targetLang = langMap[langCode] || langName;
+
+      const prompt = `You are a professional CV translator. Translate the following HTML snippets to ${targetLang}. 
+Rules:
+- Keep ALL HTML tags and attributes exactly as-is, only translate the visible text content inside them
+- Preserve proper nouns, brand names, company names, product names, numbers, percentages, and dates unchanged
+- Keep professional tone appropriate for a senior product designer's CV
+- For Catalan, use formal Catalan (not Spanish)
+- Return ONLY a JSON array of strings, one per input item, in the exact same order
+- Do not add any explanation or markdown, just the JSON array
+
+Input items:
+${JSON.stringify(texts)}`;
+
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 4000,
+          messages: [{ role: 'user', content: prompt }]
+        })
+      });
+
+      const data = await response.json();
+      const raw = data.content?.[0]?.text || '[]';
+      
+      // Parse JSON - strip any markdown fences if present
+      const clean = raw.replace(/```json|```/g, '').trim();
+      const translated = JSON.parse(clean);
+
+      cache[langCode] = translated;
+      applyTranslation(translated);
+      currentLang = langCode;
+      setActiveLang(langCode);
+
+    } catch (err) {
+      console.error('Translation error:', err);
+    } finally {
+      hideOverlay();
+    }
+  }
+
+  // ── Wire up clicks ────────────────────────────────────────────────────────
+  document.querySelectorAll('.lang-trigger').forEach(el => {
+    el.addEventListener('click', () => {
+      const langCode = el.dataset.lang;
+      const langName = el.dataset.langName;
+      if (langCode === 'en') {
+        restoreOriginals();
+        currentLang = 'en';
+        setActiveLang('en');
+      } else {
+        translateTo(langCode, langName);
+      }
+    });
+  });
+
+  // Mark English as active by default
+  setActiveLang('en');
+})();
+</script>
+</body>
+</html>
