@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marta Gracia — Senior Product Designer</title>
+<title>Marta Gracia, Senior Product Designer</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -750,7 +750,7 @@
       border-left: none !important;
       border-top: 1px solid rgba(110,142,251,0.2) !important;
       border-radius: 20px 20px 0 0 !important;
-      padding: 40px 20px 20px !important;
+      padding: 40px 16px 20px !important;
       top: auto !important;
       bottom: 0 !important;
       height: 92% !important;
@@ -770,7 +770,7 @@
       <div class="title">Senior Product Designer · UX/UI Lecturer</div>
       <p class="about-text">
         Senior Product Designer with <strong>7+ years of experience</strong> leading end-to-end product design for early-stage startups and Big-Tech. First designer at multiple companies, I've shipped <strong>27 products</strong> across 11 cross-functional teams from MVPs to high-scale products.<br><br>
-        I actively integrate <strong>AI tools (Claude, ChatGPT, Perplexity, Gemini)</strong> into my design process — from research synthesis and rapid prototyping to UX writing and documentation — moving faster and with greater precision at every stage of the design process.
+        I actively integrate <strong>AI tools (Claude, ChatGPT, Perplexity, Gemini)</strong> into my design process, from research synthesis and rapid prototyping to UX writing and documentation, moving faster and with greater precision at every stage of the design process.
       </p>
     </div>
     <div class="header-meta">
@@ -802,7 +802,7 @@
           <label style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text-muted); display:block; margin-bottom:6px; letter-spacing:0.08em;">YOUR NAME</label>
           <input id="modal-name" type="text" placeholder="Jane Doe"
             style="width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 14px; color:var(--text-primary); font-family:'DM Sans',sans-serif; font-size:13px; outline:none; transition:border-color 0.2s; box-sizing:border-box;">
-          <div id="err-name" style="display:none; font-family:'DM Mono',monospace; font-size:11px; color:#f07070; margin-top:5px; letter-spacing:0.05em;">Psst — I'd love to know who's writing!</div>
+          <div id="err-name" style="display:none; font-family:'DM Mono',monospace; font-size:11px; color:#f07070; margin-top:5px; letter-spacing:0.05em;">Psst, I'd love to know who's writing!</div>
         </div>
 
         <!-- EMAIL -->
@@ -810,7 +810,7 @@
           <label style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text-muted); display:block; margin-bottom:6px; letter-spacing:0.08em;">YOUR EMAIL</label>
           <input id="modal-email" type="email" placeholder="you@company.com"
             style="width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 14px; color:var(--text-primary); font-family:'DM Sans',sans-serif; font-size:13px; outline:none; transition:border-color 0.2s; box-sizing:border-box;">
-          <div id="err-email" style="display:none; font-family:'DM Mono',monospace; font-size:11px; color:#f07070; margin-top:5px; letter-spacing:0.05em;">That doesn't look quite right — valid email?</div>
+          <div id="err-email" style="display:none; font-family:'DM Mono',monospace; font-size:11px; color:#f07070; margin-top:5px; letter-spacing:0.05em;">That doesn't look quite right, valid email?</div>
         </div>
 
         <!-- MESSAGE -->
@@ -818,7 +818,7 @@
           <label style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text-muted); display:block; margin-bottom:6px; letter-spacing:0.08em;">MESSAGE</label>
           <textarea id="modal-message" placeholder="Hi Marta, I'd love to connect about..." 
             style="flex:1; width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 14px; color:var(--text-primary); font-family:'DM Sans',sans-serif; font-size:13px; outline:none; resize:none; transition:border-color 0.2s; box-sizing:border-box; display:block; min-height:120px;"></textarea>
-          <div id="err-message" style="display:none; font-family:'DM Mono',monospace; font-size:11px; color:#f07070; margin-top:5px; letter-spacing:0.05em;">Don't be shy — say something!</div>
+          <div id="err-message" style="display:none; font-family:'DM Mono',monospace; font-size:11px; color:#f07070; margin-top:5px; letter-spacing:0.05em;">Don't be shy, say something!</div>
         </div>
 
         <!-- RESUME TOGGLE -->
@@ -922,6 +922,7 @@
 
     function openModal() {
       modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
       requestAnimationFrame(() => {
         backdrop.style.opacity = '1';
         drawerBox.style.transform = 'translate(0, 0)';
@@ -931,6 +932,7 @@
     function closeModal() {
       backdrop.style.opacity = '0';
       drawerBox.style.transform = isMobile() ? 'translateY(100%)' : 'translateX(100%)';
+      document.body.style.overflow = '';
       setTimeout(() => { modal.style.display = 'none'; }, 350);
     }
 
@@ -1024,10 +1026,10 @@
           <div class="exp-header">
             <div>
               <div class="exp-role">Senior Product Designer</div>
-              <div class="exp-company">SCRM Lidl — Scan & Go product in Lidl Plus</div>
+              <div class="exp-company">SCRM Lidl, Scan & Go product in Lidl Plus</div>
             </div>
             <div style="text-align:right; flex-shrink:0">
-              <div class="tag accent">Apr 2024 — Present</div>
+              <div class="tag accent">Apr 2024, Present</div>
             </div>
           </div>
           <div class="exp-meta">
@@ -1053,9 +1055,9 @@
           <div class="exp-header">
             <div>
               <div class="exp-role">UI Design with Figma & AI Tools Instructor</div>
-              <div class="exp-company">Nuclio Digital School — UX/UI Design + AI Design Master</div>
+              <div class="exp-company">Nuclio Digital School, UX/UI Design + AI Design Master</div>
             </div>
-            <div><div class="tag accent">Jun 2024 — Present</div></div>
+            <div><div class="tag accent">Jun 2024, Present</div></div>
           </div>
           <div class="exp-body">
             <p>&#9733; Awarded Best Instructor of the 2024/25 Academic Year across all Master's programs at Nuclio Digital School.</p>
@@ -1067,9 +1069,9 @@
           <div class="exp-header">
             <div>
               <div class="exp-role">Product Designer for SaaS AI Startups</div>
-              <div class="exp-company">Freelance — Side projects</div>
+              <div class="exp-company">Freelance, Side projects</div>
             </div>
-            <div><div class="tag accent">Jul 2023 — Present</div></div>
+            <div><div class="tag accent">Jul 2023, Present</div></div>
           </div>
           <div class="exp-meta">
             <span class="tag">Legal Tech</span>
@@ -1078,7 +1080,7 @@
             <span class="tag">B2B</span>
           </div>
           <div class="exp-body">
-            <p>Acted as the first Product Designer across three early-stage B2B SaaS startups, leading UX strategy and shaping AI-driven product experiences from 0 to 1. Defined product foundations with a strong focus on how AI integrates into the end-user experience — translating emerging capabilities into usable interactions.</p>
+            <p>Acted as the first Product Designer across three early-stage B2B SaaS startups, leading UX strategy and shaping AI-driven product experiences from 0 to 1. Defined product foundations with a strong focus on how AI integrates into the end-user experience, translating emerging capabilities into usable interactions.</p>
           </div>
         </div>
       </section>
@@ -1092,9 +1094,9 @@
           <div class="exp-header">
             <div>
               <div class="exp-role">Design & Prototyping with Figma Instructor</div>
-              <div class="exp-company">KeepCoding — UX/UI Design AI Driven Bootcamp</div>
+              <div class="exp-company">KeepCoding, UX/UI Design AI Driven Bootcamp</div>
             </div>
-            <div><div class="tag accent">Jun 2023 — Nov 2024</div></div>
+            <div><div class="tag accent">Jun 2023, Nov 2024</div></div>
           </div>
           <div class="exp-body">
             <p>Taught UI design, animation, and Figma fundamentals in bootcamp-format programs.</p>
@@ -1106,9 +1108,9 @@
           <div class="exp-header">
             <div>
               <div class="exp-role">Product Design Lead</div>
-              <div class="exp-company">Mundimoto — Europe's largest motorcycle marketplace</div>
+              <div class="exp-company">Mundimoto, Europe's largest motorcycle marketplace</div>
             </div>
-            <div><div class="tag accent">Mar 2022 — Jun 2023</div></div>
+            <div><div class="tag accent">Mar 2022, Jun 2023</div></div>
           </div>
           <div class="exp-meta">
             <span class="tag">E-Commerce</span>
@@ -1131,16 +1133,16 @@
           <div class="exp-header">
             <div>
               <div class="exp-role">UX/UI Designer</div>
-              <div class="exp-company">Tekman — Delivering learning platforms for schools</div>
+              <div class="exp-company">Tekman, Delivering learning platforms for schools</div>
             </div>
-            <div><div class="tag accent">Mar 2022 — Jun 2023</div></div>
+            <div><div class="tag accent">Mar 2022, Jun 2023</div></div>
           </div>
           <div class="exp-meta">
             <span class="tag">Ed-Tech</span>
             <span class="tag">B2B</span>
           </div>
           <div class="exp-body">
-            <p>I lead end-to-end design of six SaaS products—including Cibers (<a href="https://martagracia.framer.website" target="_blank" style="color:var(--text-secondary); text-decoration:underline;">featured in portfolio</a>)—driving UX improvements, scalability, and cross-platform consistency across desktop, tablet, and mobile environments. I built a scalable Design System with six product layers, enabling design consistency and collaboration between the design team and engineering. Partnered closely with product managers and engineers within Agile environments. Applied user research to inform design decisions. Championed design excellence through internal talks and by bridging design and development through strong technical understanding.</p>
+            <p>I lead end-to-end design of six SaaS products,including Cibers (<a href="https://martagracia.framer.website" target="_blank" style="color:var(--text-secondary); text-decoration:underline;">featured in portfolio</a>),driving UX improvements, scalability, and cross-platform consistency across desktop, tablet, and mobile environments. I built a scalable Design System with six product layers, enabling design consistency and collaboration between the design team and engineering. Partnered closely with product managers and engineers within Agile environments. Applied user research to inform design decisions. Championed design excellence through internal talks and by bridging design and development through strong technical understanding.</p>
           </div>
           <div class="metric-row">
             <div class="metric"><strong>6</strong>Redesigned Products</div>
@@ -1164,7 +1166,7 @@
     <aside class="sidebar">
       <div class="sidebar-mobile-title section-label"><span>Skills and Education</span></div>
 
-      <!-- AI Tools — featured -->
+      <!-- AI Tools, featured -->
       <div class="sidebar-card ai-card" style="background: linear-gradient(135deg, rgba(155,120,245,0.07), rgba(110,142,251,0.04));">
         <div class="section-label" style="margin-bottom:12px"><span>AI Stack</span></div>
         <div class="skills-grid">
