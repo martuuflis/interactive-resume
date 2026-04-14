@@ -769,12 +769,6 @@
           style="width:100%; padding:12px; background:linear-gradient(135deg,#6e8efb,#9b78f5); border:none; border-radius:8px; color:#fff; font-family:'DM Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; transition:opacity 0.2s;"
           onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Send Message</button>
 
-        <!-- DEBUG ONLY — REMOVE BEFORE PUBLISH -->
-        <button id="debug-success-btn"
-          onclick="closeModal(); setTimeout(showToast, 400);"
-          style="width:100%; margin-top:8px; padding:10px; background:none; border:1px dashed rgba(240,112,112,0.35); border-radius:8px; color:rgba(240,112,112,0.6); font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; cursor:pointer; transition:all 0.2s;"
-          onmouseover="this.style.borderColor='rgba(240,112,112,0.6)'; this.style.color='#f07070';" onmouseout="this.style.borderColor='rgba(240,112,112,0.35)'; this.style.color='rgba(240,112,112,0.6)';">⚙ debug: preview success screen</button>
-        <!-- /DEBUG -->
       </div>
 
     </div>
@@ -922,11 +916,31 @@
       if (!valid) return;
 
       const resumeRequested = document.getElementById('resume-toggle').checked;
-      const subject = encodeURIComponent('Contact from ' + name + (resumeRequested ? ' — Resume requested' : ''));
-      const body = encodeURIComponent(message + (resumeRequested ? '\n\n[Please attach your resume as PDF]' : '') + '\n\nFrom: ' + name + ' <' + email + '>');
-      window.location.href = 'mailto:martagraib@gmail.com?subject=' + subject + '&body=' + body;
-      closeModal();
-      setTimeout(showToast, 400);
+      const btn = document.getElementById('modal-send');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      fetch('/.netlify/functions/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message, sendResume: resumeRequested }),
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.ok) {
+            closeModal();
+            setTimeout(showToast, 400);
+          } else {
+            btn.disabled = false;
+            btn.textContent = 'Send Message';
+            alert('Something went wrong. Please try again.');
+          }
+        })
+        .catch(() => {
+          btn.disabled = false;
+          btn.textContent = 'Send Message';
+          alert('Network error. Please try again.');
+        });
     });
   </script>
 
