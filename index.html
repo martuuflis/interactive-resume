@@ -639,6 +639,8 @@
     .exp-card:hover { background: var(--glass-bg); }
   }
 
+  #modal-box { transform: translateX(100%); }
+
   .sidebar-mobile-title { display: none; }
 
   @media (max-width: 720px) {
@@ -662,6 +664,11 @@
       grid-template-columns: 1fr;
       gap: 0;
     }
+    .sidebar {
+      display: flex;
+      width: 100%;
+      padding-top: 0;
+    }
     .sidebar-mobile-title {
       display: flex;
       margin-bottom: 4px;
@@ -672,21 +679,30 @@
       align-items: flex-start;
       gap: 6px;
     }
+    .exp-card {
+      padding: 16px 18px;
+    }
     .exp-header {
       flex-direction: column;
-      gap: 6px;
+      gap: 10px;
     }
     .exp-header > div:last-child {
       order: -1;
+    }
+    .exp-meta {
+      margin-top: 6px;
+      gap: 6px;
+      flex-wrap: wrap;
     }
     #modal-box {
       max-width: 100% !important;
       border-left: none !important;
       border-top: 1px solid rgba(110,142,251,0.2) !important;
+      border-radius: 20px 20px 0 0 !important;
       top: auto !important;
       bottom: 0 !important;
       height: 92% !important;
-      transform: translateY(100%) !important;
+      transform: translateY(100%);
     }
   }
 </style>
@@ -717,7 +733,7 @@
     <!-- backdrop -->
     <div id="modal-backdrop" style="position:absolute; inset:0; background:rgba(7,8,15,0.5); backdrop-filter:blur(4px); opacity:0; transition:opacity 0.35s;"></div>
     <!-- drawer -->
-    <div id="modal-box" style="position:absolute; top:0; right:0; height:100%; width:100%; max-width:420px; background:#0d0e1b; border-left:1px solid rgba(110,142,251,0.2); padding:40px 32px 32px; overflow-y:auto; transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.4,0,0.2,1); display:flex; flex-direction:column;">
+    <div id="modal-box" style="position:absolute; top:0; right:0; height:100%; width:100%; max-width:420px; background:#0d0e1b; border-left:1px solid rgba(110,142,251,0.2); padding:40px 32px 32px; overflow-y:auto; transition:transform 0.35s cubic-bezier(0.4,0,0.2,1); display:flex; flex-direction:column;">
 
       <!-- CLOSE -->
       <button id="modal-close" style="position:absolute; top:20px; right:20px; background:none; border:none; color:var(--text-muted); font-size:16px; cursor:pointer; line-height:1; transition:color 0.2s;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-muted)'">✕</button>
@@ -746,7 +762,7 @@
         </div>
 
         <!-- MESSAGE -->
-        <div style="margin-bottom:16px; flex:1; display:flex; flex-direction:column; min-height:0;">
+        <div style="margin-bottom:16px; display:flex; flex-direction:column;">
           <label style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text-muted); display:block; margin-bottom:6px; letter-spacing:0.08em;">MESSAGE</label>
           <textarea id="modal-message" placeholder="Hi Marta, I'd love to connect about..." 
             style="flex:1; width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 14px; color:var(--text-primary); font-family:'DM Sans',sans-serif; font-size:13px; outline:none; resize:none; transition:border-color 0.2s; box-sizing:border-box; display:block; min-height:120px;"></textarea>
