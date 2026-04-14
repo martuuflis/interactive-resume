@@ -687,9 +687,35 @@
   }
 
   @media (max-width: 720px) {
-    .content { grid-template-columns: 1fr; }
-    .header { grid-template-columns: 1fr; }
+    .page {
+      padding: 28px 20px;
+      zoom: 1;
+    }
+    .header {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 36px;
+      padding-bottom: 32px;
+    }
+    .header-meta {
+      align-items: flex-start;
+      min-width: unset;
+    }
     .name { font-size: 36px; }
+    .about-text { font-size: 13px; }
+    .content {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    #modal-box {
+      max-width: 100% !important;
+      border-left: none !important;
+      border-top: 1px solid rgba(110,142,251,0.2) !important;
+      top: auto !important;
+      bottom: 0 !important;
+      height: 92% !important;
+      transform: translateY(100%) !important;
+    }
   }
 </style>
 </head>
@@ -708,7 +734,7 @@
       </p>
     </div>
     <div class="header-meta">
-      <div class="meta-item"><span class="meta-dot"></span> <a href="#" id="email-trigger"><span class="__cf_email__" data-cfemail="92fff3e0e6f3f5e0f3fbf0d2f5fff3fbfebcf1fdff">[email&#160;protected]</span></a></div>
+      <div class="meta-item"><span class="meta-dot"></span> <a href="#" id="email-trigger">martagraib@gmail.com</a></div>
       <div class="meta-item"><span class="meta-dot"></span> <a href="https://martagracia.framer.website" target="_blank">martagracia.framer.website</a></div>
       <div class="meta-item"><span class="meta-dot"></span> <a href="https://linkedin.com/in/marta-gracia-ibanez" target="_blank">linkedin.com/marta-gracia-ibanez</a></div>
       <div class="meta-item"><span class="meta-dot"></span> <a href="https://medium.com/@martagraib" target="_blank">medium.com/@martagraib</a></div>
@@ -852,17 +878,19 @@
     const backdrop = document.getElementById('modal-backdrop');
     const drawerBox = document.getElementById('modal-box');
 
+    function isMobile() { return window.innerWidth <= 720; }
+
     function openModal() {
       modal.style.display = 'block';
       requestAnimationFrame(() => {
         backdrop.style.opacity = '1';
-        drawerBox.style.transform = 'translateX(0)';
+        drawerBox.style.transform = 'translate(0, 0)';
       });
     }
 
     function closeModal() {
       backdrop.style.opacity = '0';
-      drawerBox.style.transform = 'translateX(100%)';
+      drawerBox.style.transform = isMobile() ? 'translateY(100%)' : 'translateX(100%)';
       setTimeout(() => { modal.style.display = 'none'; }, 350);
     }
 
@@ -916,9 +944,6 @@
       if (!valid) return;
 
       const resumeRequested = document.getElementById('resume-toggle').checked;
-      const btn = document.getElementById('modal-send');
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
 
       fetch('/.netlify/functions/send-email', {
         method: 'POST',
@@ -937,14 +962,10 @@
             closeModal();
             setTimeout(showToast, 400);
           } else {
-            btn.disabled = false;
-            btn.textContent = 'Send Message';
             alert('Something went wrong. Please try again.');
           }
         })
         .catch(() => {
-          btn.disabled = false;
-          btn.textContent = 'Send Message';
           alert('Network error. Please try again.');
         });
     });
