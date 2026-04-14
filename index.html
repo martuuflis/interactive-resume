@@ -315,16 +315,11 @@
     background: rgba(110,142,251,0.06);
   }
 
-  .exp-card:hover .tag {
-    border-color: rgba(110,142,251,0.3);
-    color: rgba(160,175,255,0.85);
-    background: rgba(110,142,251,0.07);
-  }
-
+  .exp-card:hover .tag,
   .exp-card.featured:hover .tag {
-    border-color: rgba(110,142,251,0.4);
-    color: rgba(160,175,255,0.95);
-    background: rgba(110,142,251,0.1);
+    border-color: rgba(110,142,251,0.25);
+    color: rgba(160,175,255,0.85);
+    background: rgba(110,142,251,0.06);
   }
 
   .exp-card:hover .tag.accent {
@@ -341,6 +336,8 @@
     font-family: 'DM Mono', monospace;
     font-size: 11px;
     color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
     transition: border-color 0.2s, background 0.2s;
   }
 
@@ -368,7 +365,7 @@
   }
 
   .metric strong {
-    display: block;
+    display: inline-block;
     font-size: 16px;
     font-weight: 500;
     background: linear-gradient(135deg, #6e8efb, #9b78f5);
@@ -509,25 +506,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 6px 8px;
+    padding: 5px 0;
     font-size: 12px;
     border-bottom: 1px solid var(--border);
-    border-radius: 6px;
-    transition: background 0.2s, transform 0.2s;
     cursor: default;
-    margin: 0 -8px;
   }
   .lang-item:last-child { border-bottom: none; }
-  .lang-item:hover {
-    background: rgba(110,142,251,0.05);
-    transform: translateY(-1px);
-  }
 
-  .lang-name {
-    color: var(--text-secondary);
-    transition: color 0.2s;
-  }
-  .lang-item:hover .lang-name { color: var(--text-primary); }
+  .lang-name { color: var(--text-secondary); }
 
   .lang-level {
     font-family: 'DM Mono', monospace;
@@ -539,10 +525,10 @@
     border-radius: 10px;
     transition: all 0.2s;
   }
-  .lang-item:hover .lang-level {
-    border-color: var(--border-accent);
-    color: var(--accent-blue);
-    background: rgba(110,142,251,0.07);
+  .sidebar-card:hover .lang-level {
+    border-color: rgba(110,142,251,0.25);
+    color: rgba(160,175,255,0.85);
+    background: rgba(110,142,251,0.06);
   }
 
   /* Award */
@@ -653,6 +639,8 @@
     .exp-card:hover { background: var(--glass-bg); }
   }
 
+  .sidebar-mobile-title { display: none; }
+
   @media (max-width: 720px) {
     .page {
       padding: 28px 20px;
@@ -673,6 +661,16 @@
     .content {
       grid-template-columns: 1fr;
       gap: 0;
+    }
+    .sidebar-mobile-title {
+      display: flex;
+      margin-bottom: 4px;
+      margin-top: 8px;
+    }
+    .cv-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
     }
     .exp-header {
       flex-direction: column;
@@ -1021,6 +1019,20 @@
       <section class="section">
         <div class="section-label"><span>More Work Experience</span></div>
 
+        <!-- KeepCoding -->
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Design & Prototyping with Figma Instructor</div>
+              <div class="exp-company">KeepCoding — UX/UI Design AI Driven Bootcamp</div>
+            </div>
+            <div><div class="tag accent">Jun 2023 — Nov 2024</div></div>
+          </div>
+          <div class="exp-body">
+            <p>Taught UI design, animation, and Figma fundamentals in bootcamp-format programs.</p>
+          </div>
+        </div>
+
         <!-- Mundimoto -->
         <div class="exp-card">
           <div class="exp-header">
@@ -1044,20 +1056,6 @@
             <div class="metric"><strong>-60%</strong>Manual Workload</div>
           </div>
           <span class="metric-note">Direct impact of my journey in Mundimoto's E-Commerce</span>
-        </div>
-
-        <!-- KeepCoding -->
-        <div class="exp-card">
-          <div class="exp-header">
-            <div>
-              <div class="exp-role">Design, Prototyping & Figma Instructor</div>
-              <div class="exp-company">KeepCoding</div>
-            </div>
-            <div><div class="tag accent">Jun 2023 — Nov 2024</div></div>
-          </div>
-          <div class="exp-body">
-            <p>Taught design, animation, and Figma fundamentals to a wide range of students in bootcamp-format programs.</p>
-          </div>
         </div>
 
         <!-- Tekman -->
@@ -1096,6 +1094,7 @@
 
     <!-- ─── SIDEBAR ─── -->
     <aside class="sidebar">
+      <div class="sidebar-mobile-title section-label"><span>Skills and Education</span></div>
 
       <!-- AI Tools — featured -->
       <div class="sidebar-card ai-card" style="background: linear-gradient(135deg, rgba(155,120,245,0.07), rgba(110,142,251,0.04));">
