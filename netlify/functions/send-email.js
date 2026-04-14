@@ -39,10 +39,10 @@ exports.handler = async (event) => {
 
   try {
     await resend.emails.send({
-      from: 'Marta Gracia <onboarding@resend.dev>',
+      from: 'Marta Gracia Portfolio <onboarding@resend.dev>',
       to: 'martagraib@gmail.com',
       replyTo: email,
-      subject: `Message from ${name}${sendResume ? ' — Resume requested' : ''}`,
+      subject: `Portfolio contact: ${name}${sendResume ? ' — Resume requested' : ''}`,
       html: `
         <p><strong>From:</strong> ${name} &lt;${email}&gt;</p>
         <p><strong>Message:</strong></p>
@@ -57,10 +57,10 @@ exports.handler = async (event) => {
       body: JSON.stringify({ ok: true }),
     };
   } catch (err) {
-    console.error('Resend error:', err);
+    console.error('Resend error:', JSON.stringify(err));
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to send email' }),
+      body: JSON.stringify({ error: err.message || 'Failed to send email' }),
     };
   }
 };
