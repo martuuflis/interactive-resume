@@ -650,16 +650,41 @@
     }
     .header {
       grid-template-columns: 1fr;
-      gap: 24px;
-      margin-bottom: 36px;
-      padding-bottom: 32px;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .section-label {
+      margin-bottom: 10px;
+    }
+    .exp-card {
+      margin-bottom: 8px;
+    }
+    .sidebar-card {
+      padding: 14px 16px;
     }
     .header-meta {
       align-items: flex-start;
       min-width: unset;
     }
-    .name { font-size: 36px; }
-    .about-text { font-size: 13px; }
+    .name { font-size: 38px; }
+    .title { font-size: 14px; }
+    .about-text { font-size: 15px; }
+    .meta-item { font-size: 13px; }
+    .section-label { font-size: 13px; }
+    .exp-role { font-size: 17px; }
+    .exp-company { font-size: 13px; }
+    .exp-body { font-size: 15px; }
+    .tag { font-size: 13px; }
+    .metric { font-size: 13px; }
+    .metric strong { font-size: 18px; }
+    .skill-pill { font-size: 13px; }
+    .lang-name { font-size: 14px; }
+    .lang-level { font-size: 13px; }
+    .footer-mono { font-size: 13px; }
     .content {
       grid-template-columns: 1fr;
       gap: 0;
@@ -699,6 +724,7 @@
       border-left: none !important;
       border-top: 1px solid rgba(110,142,251,0.2) !important;
       border-radius: 20px 20px 0 0 !important;
+      padding: 40px 20px 20px !important;
       top: auto !important;
       bottom: 0 !important;
       height: 92% !important;
