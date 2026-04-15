@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Marta Gracia, Senior Product Designer</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -27,13 +27,18 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  html {
+    background-color: var(--bg);
+    min-height: 100%;
+  }
+
   body {
     background-color: var(--bg);
     color: var(--text-primary);
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
     line-height: 1.6;
-    min-height: 100vh;
+    min-height: 100dvh;
     /* Dot grid background */
     background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
     background-size: 24px 24px;
@@ -81,7 +86,7 @@
     align-items: start;
     margin-bottom: 56px;
     padding-bottom: 48px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(255,255,255,0.22);
     position: relative;
   }
 
@@ -610,7 +615,7 @@
   .cv-footer {
     margin-top: 48px;
     padding-top: 24px;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid rgba(255,255,255,0.22);
     display: flex;
     justify-content: space-between;
     align-items: center;
