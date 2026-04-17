@@ -25,6 +25,194 @@
     --glass-border: rgba(255,255,255,0.1);
   }
 
+  html[data-theme="light"] {
+    --bg: #f5f0e8;
+    --surface: rgba(255,255,255,0.85);
+    --surface-hover: rgba(255,255,255,0.98);
+    --border: rgba(0,0,0,0.07);
+    --border-accent: rgba(80,60,200,0.28);
+    --text-primary: #2c2420;
+    --text-secondary: #5a5248;
+    --text-muted: #6b6158;
+    --accent-blue: #2a4db5;
+    --accent-violet: #5e3fc0;
+    --accent-cyan: #0891b2;
+    --gradient-main: linear-gradient(135deg, #2a4db5, #5e3fc0);
+    --gradient-subtle: linear-gradient(135deg, rgba(42,77,181,0.09), rgba(94,63,192,0.05));
+    --dot-color: rgba(140,120,90,0.22);
+    --glass-bg: rgba(255,255,255,0.80);
+    --glass-border: rgba(0,0,0,0.09);
+  }
+
+  html[data-theme="light"] body::before {
+    background: radial-gradient(circle, rgba(42,77,181,0.09) 0%, transparent 70%);
+  }
+  html[data-theme="light"] body::after {
+    background: radial-gradient(circle, rgba(94,63,192,0.08) 0%, transparent 70%);
+  }
+  html[data-theme="light"] .name {
+    background: linear-gradient(135deg, #1c1814 30%, #5e3fc0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  html[data-theme="light"] .header {
+    border-bottom-color: rgba(0,0,0,0.10);
+  }
+  html[data-theme="light"] .cv-footer {
+    border-top-color: rgba(0,0,0,0.10);
+  }
+  html[data-theme="light"] .footer-cta {
+    border-bottom-color: rgba(0,0,0,0.08);
+  }
+
+  /* Apple-style solid cards */
+  html[data-theme="light"] .exp-card,
+  html[data-theme="light"] .sidebar-card {
+    background: #ffffff;
+    border-color: rgba(0,0,0,0.07);
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  html[data-theme="light"] .exp-card.featured {
+    background: #ffffff;
+    border-color: rgba(94,63,192,0.15);
+    box-shadow: none;
+  }
+  html[data-theme="light"] .ai-card {
+    background: #fdfcff;
+    border-color: rgba(94,63,192,0.14);
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  html[data-theme="light"] .award-card {
+    background: #fafbff;
+    border-color: rgba(42,77,181,0.12);
+    box-shadow: none;
+  }
+
+  /* Card hover: lift only on hover */
+  html[data-theme="light"] .exp-card:hover {
+    background: #ffffff;
+    border-color: rgba(42,77,181,0.20);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+    transform: translateY(-2px);
+  }
+  html[data-theme="light"] .exp-card.featured:hover {
+    background: #ffffff;
+    border-color: rgba(94,63,192,0.25);
+    box-shadow: 0 8px 32px rgba(94,63,192,0.10), 0 2px 8px rgba(0,0,0,0.04);
+    transform: translateY(-2px);
+  }
+  html[data-theme="light"] .exp-card:hover .metric {
+    border-color: rgba(42,77,181,0.15);
+    background: rgba(42,77,181,0.04);
+  }
+  html[data-theme="light"] .sidebar-card:hover {
+    background: #ffffff;
+    border-color: rgba(0,0,0,0.10);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.07), 0 2px 6px rgba(0,0,0,0.04);
+    transform: translateY(-2px);
+  }
+
+  /* Tags & chips */
+  html[data-theme="light"] .tag {
+    color: #5a5248;
+    border-color: rgba(0,0,0,0.12);
+    background: rgba(0,0,0,0.04);
+  }
+  html[data-theme="light"] .tag.accent {
+    color: var(--accent-blue);
+    border-color: rgba(42,77,181,0.28);
+    background: rgba(42,77,181,0.07);
+  }
+  html[data-theme="light"] .exp-card.featured .tag,
+  html[data-theme="light"] .exp-card:hover .tag,
+  html[data-theme="light"] .exp-card.featured:hover .tag {
+    color: #5a5248;
+    border-color: rgba(0,0,0,0.12);
+    background: rgba(0,0,0,0.04);
+  }
+  html[data-theme="light"] .exp-card:hover .tag.accent,
+  html[data-theme="light"] .exp-card.featured:hover .tag.accent {
+    color: var(--accent-blue);
+    border-color: rgba(42,77,181,0.35);
+    background: rgba(42,77,181,0.09);
+  }
+  html[data-theme="light"] .skill-pill:hover,
+  html[data-theme="light"] .sidebar-card:hover .skill-pill {
+    color: var(--accent-blue);
+    border-color: rgba(42,77,181,0.35);
+    background: rgba(42,77,181,0.07);
+  }
+  html[data-theme="light"] .ai-card:hover .skill-pill.ai {
+    color: var(--accent-violet);
+    border-color: rgba(94,63,192,0.35);
+    background: rgba(94,63,192,0.07);
+  }
+  html[data-theme="light"] .sidebar-card:hover .lang-level {
+    color: var(--accent-blue);
+    border-color: rgba(42,77,181,0.28);
+    background: rgba(42,77,181,0.06);
+  }
+
+  /* Modal */
+  #modal-box {
+    background: #0d0e1b;
+    border-left: 1px solid rgba(110,142,251,0.2);
+  }
+  html[data-theme="light"] #modal-box {
+    background: rgba(252,249,244,0.97);
+    border-left-color: rgba(0,0,0,0.08);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+  html[data-theme="light"] #modal-backdrop {
+    background: rgba(100,85,65,0.35);
+  }
+  html[data-theme="light"] #modal-name,
+  html[data-theme="light"] #modal-email,
+  html[data-theme="light"] #modal-message {
+    background: rgba(255,255,255,0.85);
+    border-color: rgba(0,0,0,0.14) !important;
+    color: var(--text-primary);
+  }
+  html[data-theme="light"] #modal-send {
+    background: linear-gradient(135deg, #2a4db5, #5e3fc0);
+  }
+
+  /* Light mode: resume card + skill pills + metric + lang */
+  html[data-theme="light"] .skill-pill {
+    color: var(--text-secondary);
+    background: rgba(0,0,0,0.03);
+    border-color: rgba(0,0,0,0.09);
+  }
+  html[data-theme="light"] .skill-pill.ai {
+    border-color: rgba(94,63,192,0.22);
+    background: rgba(94,63,192,0.04);
+    color: var(--accent-violet);
+  }
+  html[data-theme="light"] .lang-level {
+    background: rgba(0,0,0,0.04);
+    border-color: rgba(0,0,0,0.09);
+    color: var(--text-secondary);
+  }
+  html[data-theme="light"] .metric {
+    background: rgba(0,0,0,0.03);
+    border-color: rgba(0,0,0,0.07);
+  }
+  html[data-theme="light"] .featured-metric {
+    background: rgba(0,0,0,0.03);
+    border-color: rgba(0,0,0,0.07);
+  }
+  html[data-theme="light"] #resume-card {
+    background: rgba(0,0,0,0.03);
+    border-color: rgba(0,0,0,0.09);
+    box-shadow: none;
+  }
+
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html {
@@ -344,6 +532,11 @@
     display: flex;
     flex-direction: column;
     transition: border-color 0.2s, background 0.2s;
+  }
+
+  .featured-metric {
+    background: rgba(110,142,251,0.08);
+    border-color: rgba(110,142,251,0.25);
   }
 
   .exp-card:hover .metric {
@@ -855,6 +1048,54 @@
     .btn-primary, .btn-secondary { font-size: 13px; padding: 12px 20px; flex: 1; justify-content: center; white-space: nowrap; }
   }
 
+  /* ─── THEME TOGGLE ─── */
+  #theme-toggle {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 52px;
+    height: 28px;
+    background: var(--glass-bg);
+    border: 1px solid var(--border-accent);
+    border-radius: 28px;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    transition: background 0.3s, border-color 0.3s;
+    z-index: 10;
+    padding: 0;
+  }
+  html[data-theme="light"] #theme-toggle {
+    background: rgba(74,111,232,0.12);
+    border-color: rgba(74,111,232,0.4);
+  }
+  #theme-toggle-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent-violet);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), background 0.3s;
+  }
+  html[data-theme="light"] #theme-toggle-thumb {
+    transform: translateX(24px);
+    background: var(--accent-blue);
+  }
+  #theme-toggle-thumb svg {
+    width: 11px;
+    height: 11px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  #theme-toggle .icon-sun { display: none; }
+  #theme-toggle .icon-moon { display: block; }
+  html[data-theme="light"] #theme-toggle .icon-sun { display: block; }
+  html[data-theme="light"] #theme-toggle .icon-moon { display: none; }
+
   /* Accessibility utilities */
   .sr-only {
     position: absolute;
@@ -891,6 +1132,12 @@
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
+<button id="theme-toggle" aria-label="Switch to light mode" role="switch">
+    <span id="theme-toggle-thumb">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </span>
+</button>
 <div class="page">
 
   <!-- ─── HEADER ─── -->
@@ -916,7 +1163,7 @@
     <!-- backdrop -->
     <div id="modal-backdrop" style="position:absolute; inset:0; background:rgba(7,8,15,0.5); backdrop-filter:blur(4px); opacity:0; transition:opacity 0.35s;"></div>
     <!-- drawer -->
-    <div id="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title" style="position:absolute; top:0; right:0; height:100%; width:100%; max-width:420px; background:#0d0e1b; border-left:1px solid rgba(110,142,251,0.2); padding:40px 32px 32px; overflow-y:auto; transition:transform 0.35s cubic-bezier(0.4,0,0.2,1); display:flex; flex-direction:column;">
+    <div id="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title" style="position:absolute; top:0; right:0; height:100%; width:100%; max-width:420px; padding:40px 32px 32px; overflow-y:auto; transition:transform 0.35s cubic-bezier(0.4,0,0.2,1); display:flex; flex-direction:column;">
 
       <!-- CLOSE -->
       <button id="modal-close" aria-label="Close" style="position:absolute; top:20px; right:20px; background:none; border:none; color:var(--text-muted); font-size:16px; cursor:pointer; line-height:1; transition:color 0.2s;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-muted)'">✕</button>
@@ -1000,6 +1247,29 @@
     let toastTimer;
     function showToast() {
       const toast = document.getElementById('success-toast');
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      const toastInner = toast.querySelector('div');
+      if (isLight) {
+        toastInner.style.background = 'rgba(255,255,255,0.97)';
+        toastInner.style.border = '1px solid rgba(0,150,80,0.22)';
+        toastInner.style.boxShadow = '0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06)';
+        const title = toastInner.querySelector('div > div:first-child');
+        const sub = toastInner.querySelector('div > div:last-child');
+        const closeBtn = toastInner.querySelector('button');
+        if (title) title.style.color = '#1a6b40';
+        if (sub) sub.style.color = 'rgba(30,80,50,0.65)';
+        if (closeBtn) { closeBtn.style.color = 'rgba(30,80,50,0.55)'; closeBtn.onmouseover = () => closeBtn.style.color='rgba(30,80,50,0.9)'; closeBtn.onmouseout = () => closeBtn.style.color='rgba(30,80,50,0.55)'; }
+      } else {
+        toastInner.style.background = 'rgba(14,30,20,0.95)';
+        toastInner.style.border = '1px solid rgba(70,200,120,0.3)';
+        toastInner.style.boxShadow = '0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(70,200,120,0.08)';
+        const title = toastInner.querySelector('div > div:first-child');
+        const sub = toastInner.querySelector('div > div:last-child');
+        const closeBtn = toastInner.querySelector('button');
+        if (title) title.style.color = '#a8f0c0';
+        if (sub) sub.style.color = 'rgba(140,210,160,0.7)';
+        if (closeBtn) { closeBtn.style.color = 'rgba(140,210,160,0.8)'; closeBtn.onmouseover = () => closeBtn.style.color='rgba(140,210,160,1)'; closeBtn.onmouseout = () => closeBtn.style.color='rgba(140,210,160,0.8)'; }
+      }
       toast.style.opacity = '1';
       toast.style.transform = 'translateX(-50%) translateY(0)';
       toast.style.pointerEvents = 'all';
@@ -1014,7 +1284,10 @@
     }
 
     function setFieldState(el, state) {
-      const colors = { default: 'rgba(255,255,255,0.08)', focus: 'rgba(110,142,251,0.5)', error: 'rgba(240,112,112,0.6)', valid: 'rgba(77,217,224,0.4)' };
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      const colors = isLight
+        ? { default: 'rgba(0,0,0,0.14)', focus: 'rgba(42,77,181,0.55)', error: 'rgba(180,40,40,0.7)', valid: 'rgba(10,130,90,0.55)' }
+        : { default: 'rgba(255,255,255,0.08)', focus: 'rgba(110,142,251,0.5)', error: 'rgba(240,112,112,0.6)', valid: 'rgba(77,217,224,0.4)' };
       el.style.borderColor = colors[state] || colors.default;
     }
 
@@ -1025,16 +1298,17 @@
     const resumeCard = document.getElementById('resume-card');
 
     function updateToggleUI(checked) {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
       if (checked) {
         toggleTrack.style.background = 'rgba(110,142,251,0.5)';
         toggleThumb.style.transform = 'translateX(18px)';
-        resumeCard.style.background = 'rgba(110,142,251,0.08)';
-        resumeCard.style.borderColor = 'rgba(110,142,251,0.35)';
+        resumeCard.style.background = isLight ? 'rgba(42,77,181,0.07)' : 'rgba(110,142,251,0.08)';
+        resumeCard.style.borderColor = isLight ? 'rgba(42,77,181,0.32)' : 'rgba(110,142,251,0.35)';
       } else {
-        toggleTrack.style.background = 'rgba(255,255,255,0.08)';
+        toggleTrack.style.background = isLight ? 'rgba(0,0,0,0.09)' : 'rgba(255,255,255,0.08)';
         toggleThumb.style.transform = 'translateX(0)';
-        resumeCard.style.background = 'rgba(255,255,255,0.03)';
-        resumeCard.style.borderColor = 'rgba(255,255,255,0.08)';
+        resumeCard.style.background = isLight ? 'rgba(255,255,255,0.60)' : 'rgba(255,255,255,0.03)';
+        resumeCard.style.borderColor = isLight ? 'rgba(0,0,0,0.09)' : 'rgba(255,255,255,0.08)';
       }
     }
 
@@ -1081,6 +1355,30 @@
       } else {
         if (document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const docEl = document.documentElement;
+
+    function setTheme(theme) {
+      docEl.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      const isLight = theme === 'light';
+      themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+      themeToggle.setAttribute('aria-checked', isLight ? 'true' : 'false');
+      // Fix inline-style backdrop (CSS can't override inline styles)
+      const backdrop = document.getElementById('modal-backdrop');
+      if (backdrop) backdrop.style.background = isLight ? 'rgba(100,85,65,0.30)' : 'rgba(7,8,15,0.5)';
+    }
+
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(saved || (prefersDark ? 'dark' : 'light'));
+
+    themeToggle.addEventListener('click', () => {
+      setTheme(docEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      updateToggleUI(resumeToggle.checked);
     });
 
     document.getElementById('email-trigger').addEventListener('click', function(e) {
@@ -1190,9 +1488,9 @@
             <p>My role includes translating business and user needs into scalable product solutions, aligning technical feasibility with product strategy. Actively involved in scaling the feature from early pilot stages to international rollout, adapting the experience across multiple markets and constraints. I have a data-informed approach combining user research, usability testing, and A/B testing. I also contribute to the evolution of the Design System and lead initiatives such as UX writing improvements to ensure consistency and clarity across the Lidl Plus App experience.</p>
           </div>
           <div class="metric-row">
-            <div class="metric" style="background:rgba(110,142,251,0.08); border-color:rgba(110,142,251,0.25);"><strong>+200.000</strong>Monthly Active Users</div>
-            <div class="metric" style="background:rgba(110,142,251,0.08); border-color:rgba(110,142,251,0.25);"><strong>+8%</strong>Conversion Uplift YOY</div>
-            <div class="metric" style="background:rgba(110,142,251,0.08); border-color:rgba(110,142,251,0.25);"><strong>-15%</strong>Checkout drop-off YOY</div>
+            <div class="metric featured-metric"><strong>+200.000</strong>Monthly Active Users</div>
+            <div class="metric featured-metric"><strong>+8%</strong>Conversion Uplift YOY</div>
+            <div class="metric featured-metric"><strong>-15%</strong>Checkout drop-off YOY</div>
           </div>
           <span class="metric-note">Direct impact of my journey within the Scan & Go product</span>
         </div>
@@ -1314,7 +1612,7 @@
       <h2 class="sidebar-mobile-title section-label"><span>Skills and Education</span></h2>
 
       <!-- AI Tools, featured -->
-      <div class="sidebar-card ai-card" style="background: linear-gradient(135deg, rgba(155,120,245,0.07), rgba(110,142,251,0.04));">
+      <div class="sidebar-card ai-card">
         <h2 class="section-label" style="margin-bottom:12px"><span>AI Stack</span></h2>
         <div class="skills-grid">
           <span class="skill-pill ai">Claude</span>
