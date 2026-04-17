@@ -1099,9 +1099,7 @@
     height: 20px;
     border-radius: 50%;
     background: var(--accent-violet);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
     transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), background 0.3s;
   }
   html[data-theme="light"] #theme-toggle-thumb {
@@ -1109,15 +1107,32 @@
     background: var(--accent-blue);
   }
   #theme-toggle-thumb svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 11px;
     height: 11px;
     color: #fff;
-    flex-shrink: 0;
+    transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1);
   }
-  #theme-toggle .icon-sun { display: none; }
-  #theme-toggle .icon-moon { display: block; }
-  html[data-theme="light"] #theme-toggle .icon-sun { display: block; }
-  html[data-theme="light"] #theme-toggle .icon-moon { display: none; }
+  /* Dark mode: moon visible at 0°, sun waiting at -180° (left side) */
+  #theme-toggle .icon-moon {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  #theme-toggle .icon-sun {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-180deg);
+  }
+  /* Light mode: sun rolls in clockwise to 0°, moon exits clockwise to +180° */
+  html[data-theme="light"] #theme-toggle .icon-sun {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  html[data-theme="light"] #theme-toggle .icon-moon {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
 
   /* Accessibility utilities */
   .sr-only {
