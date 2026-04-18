@@ -62,7 +62,7 @@
     background-clip: text;
   }
   html[data-theme="light"] .header {
-    border-bottom-color: rgba(0,0,0,0.10);
+    border-bottom-color: transparent;
   }
   html[data-theme="light"] .header-badge {
     background: rgba(80,72,228,0.07);
@@ -70,10 +70,10 @@
     -webkit-backdrop-filter: none;
   }
   html[data-theme="light"] .cv-footer {
-    border-top-color: rgba(0,0,0,0.10);
+    border-top-color: transparent;
   }
   html[data-theme="light"] .footer-cta {
-    border-bottom-color: rgba(0,0,0,0.08);
+    border-bottom-color: transparent;
   }
   html[data-theme="light"] .section-label span {
     background: var(--gradient-label);
@@ -207,7 +207,7 @@
     color: var(--text-primary);
   }
   html[data-theme="light"] #modal-send {
-    background: linear-gradient(135deg, #2a4db5, #5e3fc0);
+    background: linear-gradient(135deg, #5b6cf8, #8b5cf6);
   }
 
   /* Light mode: resume card + skill pills + metric + lang */
@@ -1079,6 +1079,9 @@
   @media (max-width: 720px) {
     .cta-row { margin-top: 20px; width: 100%; }
     .btn-primary, .btn-secondary { font-size: 13px; padding: 12px 20px; flex: 1; justify-content: center; white-space: nowrap; }
+    #theme-toggle { width: 63px; height: 34px; border-radius: 34px; }
+    #theme-toggle-thumb { width: 24px; height: 24px; }
+    html[data-theme="light"] #theme-toggle-thumb { transform: translateX(29px); }
   }
 
   /* ─── THEME TOGGLE ─── */
